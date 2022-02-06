@@ -9,5 +9,6 @@ jobs:
       - uses: actions/checkout@v1
       - uses: ./.github/actions/composer
       - uses: ./.github/actions/config-framework
+      - uses: michaelw90/PHP-Lint@master
       - run: ./vendor/bin/phpcs
       - run: ./vendor/bin/phpunit
