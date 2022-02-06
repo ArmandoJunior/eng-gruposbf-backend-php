@@ -24,6 +24,7 @@
     <arg name="colors"/>
     <arg value="p"/>
     <ini name="memory_limit" value="128M"/>
-    <rule ref="PSR1"/>
+<!--    <rule ref="PSR1"/>-->
+    <rule ref="PSR2"/>
 
 </ruleset>
