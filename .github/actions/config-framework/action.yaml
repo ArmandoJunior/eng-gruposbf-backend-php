@@ -1,0 +1,8 @@
+name: 'Config Framework'
+description: 'Run PHP artisan commands'
+runs:
+  using: docker
+  image: Dockerfile
+branding:
+  icon: airplay
+  color: orange
