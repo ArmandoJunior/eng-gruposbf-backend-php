@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd" bootstrap="vendor/autoload.php" colors="true">
-    <coverage cacheDirectory="/path/to/directory"
-              includeUncoveredFiles="true"
-              processUncoveredFiles="true"
-              pathCoverage="false"
-              ignoreDeprecatedCodeUnits="true"
-              disableCodeCoverageIgnore="true">
-        <include>
-            <directory suffix=".php">app/Models</directory>
-            <directory suffix=".php">app/Http/Controllers</directory>
-        </include>
-        <report>
-            <clover outputFile="clover.xml"/>
-            <crap4j outputFile="crap4j.xml" threshold="50"/>
-            <html outputDirectory="html-coverage" lowUpperBound="50" highLowerBound="90"/>
-            <php outputFile="coverage.php"/>
-            <text outputFile="coverage.txt" showUncoveredFiles="false" showOnlySummary="true"/>
-<!--            <xml outputDirectory="xml-coverage"/>-->
-        </report>
-        <!-- ... -->
-    </coverage>
+<!--    <coverage cacheDirectory="/path/to/directory"-->
+<!--              includeUncoveredFiles="true"-->
+<!--              processUncoveredFiles="true"-->
+<!--              pathCoverage="false"-->
+<!--              ignoreDeprecatedCodeUnits="true"-->
+<!--              disableCodeCoverageIgnore="true">-->
+<!--        <include>-->
+<!--            <directory suffix=".php">app/Models</directory>-->
+<!--            <directory suffix=".php">app/Http/Controllers</directory>-->
+<!--        </include>-->
+<!--        <report>-->
+<!--            <clover outputFile="clover.xml"/>-->
+<!--            <crap4j outputFile="crap4j.xml" threshold="50"/>-->
+<!--            <html outputDirectory="html-coverage" lowUpperBound="50" highLowerBound="90"/>-->
+<!--            <php outputFile="coverage.php"/>-->
+<!--            <text outputFile="coverage.txt" showUncoveredFiles="false" showOnlySummary="true"/>-->
+<!--&lt;!&ndash;            <xml outputDirectory="xml-coverage"/>&ndash;&gt;-->
+<!--        </report>-->
+<!--        &lt;!&ndash; ... &ndash;&gt;-->
+<!--    </coverage>-->
     <!--    <coverage processUncoveredFiles="true">-->
     <!--    <include>-->
     <!--      <directory suffix=".php">./app</directory>-->
