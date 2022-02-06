@@ -1,0 +1,8 @@
+name: 'composer install'
+description: 'Run PHP composer'
+runs:
+  using: docker
+  image: Dockerfile
+branding:
+  icon: x-circle
+  color: green
