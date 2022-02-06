@@ -1,0 +1,9 @@
+name: Laravel build
+on: [push]
+
+jobs:
+  build:
+    name: Laravel build application
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v1
