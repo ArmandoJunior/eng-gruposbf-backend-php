@@ -1,0 +1,6 @@
+GET {{uri}}/products
+Accept: application/json
+
+###
+GET {{uri}}/products/997
+Accept: application/json
