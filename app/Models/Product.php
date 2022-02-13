@@ -11,5 +11,4 @@ class Product extends Model
 
     protected $fillable = ['name'];
     protected $casts = ['id' => 'string'];
-
 }

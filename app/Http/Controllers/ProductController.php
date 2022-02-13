@@ -20,5 +20,4 @@ class ProductController extends Controller
     {
         return Product::query()->find($id);
     }
-
 }
