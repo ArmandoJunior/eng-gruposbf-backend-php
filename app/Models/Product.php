@@ -10,8 +10,6 @@ class Product extends Model
     use HasFactory;
 
     protected $fillable = ['name'];
+    protected $casts = ['id' => 'string'];
 
-//    protected $casts = [
-//        'id' => 'string'
-//    ];
 }
