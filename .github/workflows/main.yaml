@@ -19,7 +19,7 @@ jobs:
         env:
           MYSQL_DATABASE: sbf_db_test
           MYSQL_HOST: 127.0.0.1
-          MYSQL_USER: admin
+#          MYSQL_USER: admin
           MYSQL_PASSWORD: jr1207
           MYSQL_ROOT_PASSWORD: root
         ports:
