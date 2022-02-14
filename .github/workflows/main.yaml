@@ -5,6 +5,14 @@ jobs:
   build:
     name: Laravel build application
     runs-on: ubuntu-20.04
+    strategy:
+      matrix:
+        operating-system: [ 'ubuntu-latest' ]
+        php-versions: [ '7.4' ]
+        phpunit-versions: [ 'latest' ]
+        include:
+          - operating-system: 'ubuntu-latest'
+            php-versions: '7.4'
     services:
       mysql:
         image: mysql:5.7
