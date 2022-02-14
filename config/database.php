@@ -35,6 +35,15 @@ return [
 
     'connections' => [
 
+        'testing' => [
+            'driver' => 'mysql',
+            'host' => env('TESTING_DB_HOST', '127.0.0.1'),
+            'port' => env('TESTING_DB_PORT', '3306'),
+            'database' => env('TESTING_DB_DATABASE', 'forge'),
+            'username' => env('TESTING_DB_USERNAME', 'forge'),
+            'password' => env('TESTING_DB_PASSWORD', '')
+        ],
+
         'sqlite' => [
             'driver' => 'sqlite',
             'url' => env('DATABASE_URL'),
@@ -116,14 +125,6 @@ return [
     | such as APC or Memcached. Laravel makes it easy to dig right in.
     |
     */
-    'testing' => [
-        'driver' => 'mysql',
-        'host' => env('TESTING_DB_HOST', '127.0.0.1'),
-        'port' => env('TESTING_DB_PORT', '3306'),
-        'database' => env('TESTING_DB_DATABASE', 'forge'),
-        'username' => env('TESTING_DB_USERNAME', 'forge'),
-        'password' => env('TESTING_DB_PASSWORD', '')
-    ],
 
     'redis' => [
 
