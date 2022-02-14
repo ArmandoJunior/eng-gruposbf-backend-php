@@ -11,4 +11,5 @@ jobs:
       - uses: ./.github/actions/config-framework
 #      - uses: michaelw90/PHP-Lint@master
       - run: ./vendor/bin/phpcs
+      - run: php artisan migrate
       - run: ./vendor/bin/phpunit
