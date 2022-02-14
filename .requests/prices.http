@@ -1,0 +1,13 @@
+POST {{uri}}/prices
+Content-Type: application/json
+Accept: application/json
+
+{
+    "currency_code": "JPY",
+    "territory": "Japan"
+}
+
+###
+GET {{uri}}/prices
+Accept: application/json
+

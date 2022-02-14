@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PriceController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -22,4 +23,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::controller(ProductController::class)->group(function () {
     Route::get('/products', 'index');
     Route::get('/products/{id}', 'show');
+});
+
+Route::controller(PriceController::class)->group(function () {
+    Route::get('/prices', 'index');
+    Route::post('/prices', 'store');
 });

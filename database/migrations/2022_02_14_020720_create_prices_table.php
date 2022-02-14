@@ -16,7 +16,7 @@ class CreatePricesTable extends Migration
         Schema::create('prices', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->decimal('value');
-            $table->string('currency_code', 3);
+            $table->string('currency_code', 3)->unique();
             $table->string('territory', 40);
             $table->timestamps();
         });
