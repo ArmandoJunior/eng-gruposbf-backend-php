@@ -41,6 +41,8 @@ $app->singleton(
     App\Exceptions\Handler::class
 );
 
+$app->configure('database');
+
 /*
 |--------------------------------------------------------------------------
 | Return The Application
