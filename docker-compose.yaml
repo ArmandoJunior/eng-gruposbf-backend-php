@@ -10,7 +10,7 @@ services:
       - _DB_DATABASE=sbf_db
       - _DB_USERNAME=root
       - _DB_PASSWORD=root
-      - _TEST_DB_HOST=127.0.0.1
+      - _TEST_DB_HOST=172.18.0.1
       - _TEST_DB_DATABASE=sbf_db_test
       - _TEST_DB_USERNAME=admin
       - _TEST_DB_PASSWORD=jr1207
