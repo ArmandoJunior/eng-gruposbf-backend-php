@@ -10,7 +10,7 @@ jobs:
         image: mysql:5.7
         env:
           MYSQL_DATABASE: sbf_db_test
-          MYSQL_HOST: mysql
+          MYSQL_HOST: 127.0.0.1
           MYSQL_USER: admin
           MYSQL_PASSWORD: root
           MYSQL_ROOT_PASSWORD: root
