@@ -5,6 +5,18 @@ jobs:
   build:
     name: Laravel build application
     runs-on: ubuntu-20.04
+    services:
+      mysql:
+        image: mysql:5.7
+        env:
+          MYSQL_DATABASE: sbf_db_test
+          MYSQL_HOST: mysql
+          MYSQL_USER: admin
+          MYSQL_PASSWORD: root
+          MYSQL_ROOT_PASSWORD: root
+        ports:
+          - 3306:3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
     steps:
       - uses: actions/checkout@v1
       - uses: ./.github/actions/composer
