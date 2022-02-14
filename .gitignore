@@ -18,3 +18,4 @@ yarn-error.log
 /phpunit.xml
 /.docker/dbdata/
 /.env.testing
+/coverage.php
