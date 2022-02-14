@@ -18,13 +18,16 @@ jobs:
         image: mysql:5.7
         env:
           MYSQL_DATABASE: sbf_db_test
-          MYSQL_HOST: 127.0.0.1
           MYSQL_USER: root
           MYSQL_PASSWORD: jr1207
           MYSQL_ROOT_PASSWORD: root
         ports:
-          - 3306:3306
-        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+          - 3306
+        options: >-
+          --health-cmd="mysqladmin ping"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=3
     steps:
       - uses: actions/checkout@v1
       - uses: ./.github/actions/composer
@@ -32,3 +35,7 @@ jobs:
 #      - uses: michaelw90/PHP-Lint@master
       - run: ./vendor/bin/phpcs
       - run: ./vendor/bin/phpunit
+      - run: |
+          mysql --version
+          sudo apt-get install -y mysql-client
+          mysql --host 127.0.0.1 --port ${{ job.services.mysql.ports['3306'] }} -uuser -psecret -e "SHOW DATABASES"
