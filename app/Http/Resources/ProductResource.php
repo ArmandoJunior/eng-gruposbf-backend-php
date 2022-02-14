@@ -17,7 +17,7 @@ class ProductResource extends JsonResource
     {
         $amount = $this->amount;
         $prices = Price::all(['currency_code', 'value', 'territory']);
-        $pricesFiltered = $prices->filter(function ($obj) use ($amount){
+        $pricesFiltered = $prices->filter(function ($obj) use ($amount) {
             $value = $obj->value * $amount;
             $obj->value = number_format($value, 2, ',', '.');
             $obj->price_description = "{$obj->currency_code}: {$obj->value} ({$obj->territory})";

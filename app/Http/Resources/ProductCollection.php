@@ -10,7 +10,7 @@ class ProductCollection extends ResourceCollection
     {
         return [
             'status' => 'success',
-            'data' => $this->collection->each(function($product) {
+            'data' => $this->collection->each(function ($product) {
                 new ProductResource($product);
             })
         ];
