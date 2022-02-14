@@ -15,8 +15,14 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->string('name', '100');
+            $table->string('model', '100');
+            $table->enum('gender', ['masculino', 'feminino']);
             $table->decimal('amount');
+            $table->foreignUuid('brand_id');
+            $table->foreignUuid('category_id');
+
+            $table->foreign('brand_id')->references('id')->on('brands');
+            $table->foreign('category_id')->references('id')->on('categories');
             $table->timestamps();
         });
     }
