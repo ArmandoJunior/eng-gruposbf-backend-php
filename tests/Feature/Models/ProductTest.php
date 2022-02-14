@@ -13,22 +13,6 @@ class ProductTest extends TestCase
 {
     use RefreshDatabase, DatabaseMigrations;
 
-    public function createApplication()
-    {
-        return require __DIR__ . '/../../../bootstrap/app.php';
-    }
-
-    public function tearDown(): void
-    {
-        $this->artisan('migrate:reset');
-
-        $this->beforeApplicationDestroyed(function () {
-            DB::disconnect();
-        });
-
-        parent::tearDown();
-    }
-
     public function test_get_all(): void
     {
         Brand::query()->create(['name' => 'Nike']);
