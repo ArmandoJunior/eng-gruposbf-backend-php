@@ -12,7 +12,7 @@ services:
       - _DB_PASSWORD=root
       - _TEST_DB_HOST=127.0.0.1
       - _TEST_DB_DATABASE=sbf_db_test
-      - _TEST_DB_USERNAME=root
+      - _TEST_DB_USERNAME=admin
       - _TEST_DB_PASSWORD=jr1207
       - _TEST_MYSQL_ROOT_PASSWORD=root
       - XDEBUG_CONFIG=client_host=172.17.0.1 client_port=9003 start_with_request=yes log=/var/log/xdebug.log
