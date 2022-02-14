@@ -17,3 +17,4 @@ yarn-error.log
 /html-coverage/
 /phpunit.xml
 /.docker/dbdata/
+/.env.testing

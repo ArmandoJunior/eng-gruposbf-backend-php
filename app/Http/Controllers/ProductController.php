@@ -2,22 +2,32 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ProductCollection;
+use App\Http\Resources\ProductResource;
 use App\Models\Product;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class ProductController extends Controller
 {
     public function index()
     {
-        return Product::all();
+        $productsCollection = Product::query()->paginate();
+        return new ProductCollection($productsCollection);
     }
 
     /**
      * @param $id
-     * @return \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Model|null
+     * @return ProductResource|\Illuminate\Http\JsonResponse
      */
-    public function show($id): ?Model
+    public function show($id)
     {
-        return Product::query()->find($id);
+        try {
+            $product = Product::query()->findOrFail($id);
+            return new ProductResource($product);
+        } catch (ModelNotFoundException $e) {
+            return response()->json(["error" => "Product not found"], 404);
+        } catch (\Exception $e) {
+            return response()->json(["error" => "Server error"], 500);
+        }
     }
 }

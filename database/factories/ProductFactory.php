@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use Faker\Provider\Color;
 use Faker\Provider\en_US\Person;
+use Faker\Provider\pt_BR\Payment;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class ProductFactory extends Factory
@@ -20,7 +21,8 @@ class ProductFactory extends Factory
         $color = Color::colorName();
 
         return [
-            'name' =>  "$firstNameFemale $color"
+            'name' =>  "$firstNameFemale $color",
+            'amount' =>  Payment::randomFloat(2, 39, 999)
         ];
     }
 }
