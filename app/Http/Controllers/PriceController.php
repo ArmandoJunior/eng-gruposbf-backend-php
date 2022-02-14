@@ -18,14 +18,14 @@ class PriceController extends Controller
 
     public function store(
         StorePriceRequest $request,
-        CreatePriceWithCurrencyApiIntegration $createPriceWithCurrencyApiIntegration)
-    {
+        CreatePriceWithCurrencyApiIntegration $createPriceWithCurrencyApiIntegration
+    ) {
         try {
             $fields = json_decode($request->getContent());
             $dto = new PriceDto($fields);
             $price = $createPriceWithCurrencyApiIntegration->execute($dto);
             return new PriceResource($price);
-        }catch (\Exception $e) {
+        } catch (\Exception $e) {
             response()->json('error', 500);
         }
     }
