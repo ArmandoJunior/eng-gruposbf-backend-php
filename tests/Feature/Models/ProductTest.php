@@ -13,15 +13,15 @@ class ProductTest extends TestCase
 {
     use RefreshDatabase, DatabaseMigrations;
 
-    /**
-     * Creates the application.
-     *
-     * @return \Laravel\Lumen\Application
-     */
-    public function createApplication(): \Laravel\Lumen\Application
-    {
-        return require __DIR__.'/../bootstrap/app.php';
-    }
+//    /**
+//     * Creates the application.
+//     *
+//     * @return \Laravel\Lumen\Application
+//     */
+//    public function createApplication(): \Laravel\Lumen\Application
+//    {
+//        return require __DIR__ . '/../bootstrap/app.php';
+//    }
     public function tearDown(): void
     {
         $this->artisan('migrate:reset');
