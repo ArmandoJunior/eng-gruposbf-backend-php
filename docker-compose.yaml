@@ -59,6 +59,14 @@ services:
     networks:
       - sbf
 
+  redis:
+    image: redis:alpine
+    container_name: sbf-redis
+    expose:
+      - 6379
+    networks:
+      - sbf
+
 networks:
   sbf:
     driver: bridge
