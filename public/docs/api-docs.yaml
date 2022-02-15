@@ -129,5 +129,84 @@ paths:
                 properties:
                   error:
                     example: "Product not found"
-
-
+  /prices:
+    get:
+      summary: "Recupera todos os preços das regiões cadastradas no sistema"
+      responses:
+        200:
+          description: Sucesso
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        currency_code:
+                          type: string
+                        reference_base_value:
+                          type: number
+                        reference_conversion_value:
+                          type: string
+                        territory:
+                          type: string
+                        updated_at:
+                          type: string
+    post:
+      summary: "Insere uma nova região baseado no currency_code da região"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                currency_code:
+                  type: string
+                  minLength: 3
+                  maxLength: 3
+                territory:
+                  type: string
+                  minLength: 3
+                  maxLength: 40
+      description: "É necessário inserir um currency_code válido (ISO 4217), veja uma lista no link abaixo."
+      externalDocs:
+        url: https://taxsummaries.pwc.com/glossary/currency-codes
+      responses:
+        201:
+          description: Criado com Sucesso
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        currency_code:
+                          type: string
+                        reference_base_value:
+                          type: number
+                        reference_conversion_value:
+                          type: string
+                        territory:
+                          type: string
+                        updated_at:
+                          type: string
+        422:
+          description: Os dados fornecidos são inválidos
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    example: "The given data was invalid."
+                  errors:
+                    example: "The currency code has already been taken."
