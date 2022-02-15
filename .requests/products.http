@@ -2,5 +2,5 @@ GET {{uri}}/products
 Accept: application/json
 
 ###
-GET {{uri}}/products/004d457d-0c6b-46d3-af3d-2d3f531426aa
+GET {{uri}}/products/03ae90e3-d93f-431c-a7d1-61e27b5a1f01
 Accept: application/json

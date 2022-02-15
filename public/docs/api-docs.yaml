@@ -1,0 +1,133 @@
+openapi: 3.0.1
+info:
+  title: Desafio Técnico BackEnd - Grupo SBF
+  description: Conversor de moedas para produtos esportivos e adição de nova região baseado no "currency code".
+  version: 0.0.1
+  contact:
+    name: Armando N Junior
+    email: armandojrn@hotmail.com
+    url: https://www.linkedin.com/in/armandojrn/
+  license:
+    name: "Licença: GPLv3"
+    url: https://www.gnu.org/licenses/gpl-3.0.pt-br.html
+externalDocs:
+  description: github project repository
+  url: https://github.com/ArmandoJunior/eng-gruposbf-backend-php
+servers:
+  - url: http://localhost/api
+    description: API - Ambiente de desenvolvimento
+paths:
+  /products:
+    get:
+      summary: Recupera todos os produtos
+      responses:
+        200:
+          description: Sucesso
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        brand:
+                          type: string
+                        gender:
+                          type: string
+                        category:
+                          type: string
+                        model:
+                          type: string
+                        prices:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              currency_code:
+                                type: string
+                              value:
+                                type: string
+                              territory:
+                                type: string
+                              price_description:
+                                type: string
+                  links:
+                    type: object
+                    properties:
+                      url:
+                        type: string
+                      label:
+                        type: string
+                      active:
+                        type: boolean
+                  path:
+                    type: string
+                  par_page:
+                    type: integer
+                  to:
+                    type: integer
+                  total:
+                    type: integer
+  /products/{id}:
+    get:
+      summary: Recupera um produto pelo seu Id
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        200:
+          description: Sucesso
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        brand:
+                          type: string
+                        gender:
+                          type: string
+                        category:
+                          type: string
+                        model:
+                          type: string
+                        prices:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              currency_code:
+                                type: string
+                              value:
+                                type: string
+                              territory:
+                                type: string
+                              price_description:
+                                type: string
+        404:
+          description: Produto não encontrado
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    example: "Product not found"
+
+
