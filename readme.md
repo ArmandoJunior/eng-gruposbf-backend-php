@@ -1,6 +1,6 @@
 # Desafio Técnico BackEnd - Grupo SBF
 
-Use o docker-compose para startar o projeto
+Use o docker-compose para iniciar o projeto com o comando abaixo
 ```bash
 docker-compose up --build
 ```

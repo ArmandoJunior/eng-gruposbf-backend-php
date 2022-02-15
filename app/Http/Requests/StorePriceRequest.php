@@ -26,7 +26,7 @@ class StorePriceRequest extends FormRequest
     {
         return [
             'currency_code' => 'required|unique:prices|min:3|max:3|string',
-            'territory' => 'required',
+            'territory' => 'required|min:3|max:40|string',
         ];
     }
 }
