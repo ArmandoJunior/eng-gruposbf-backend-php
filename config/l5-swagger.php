@@ -7,7 +7,6 @@ return [
             'api' => [
                 'title' => 'L5 Swagger UI',
             ],
-
             'routes' => [
                 /*
                  * Route for accessing api documentation interface
@@ -19,7 +18,6 @@ return [
                  * Edit to include full URL in ui for assets
                 */
                 'use_absolute_path' => env('L5_SWAGGER_USE_ABSOLUTE_PATH', true),
-
                 /*
                  * File name of the generated json documentation file
                 */
@@ -139,7 +137,7 @@ return [
              * @note This option overwrites `paths.excludes`
              * @see \OpenApi\scan
             */
-            'exclude' => [],
+            'exclude' => []
         ],
 
         /*
@@ -275,13 +273,13 @@ return [
                  * If set to true, it persists authorization data, and it would not be lost on browser close/refresh
                  */
                 'persist_authorization' => env('L5_SWAGGER_UI_PERSIST_AUTHORIZATION', false),
-            ],
+            ]
         ],
         /*
          * Constants which can be used in annotations
          */
         'constants' => [
             'L5_SWAGGER_CONST_HOST' => env('L5_SWAGGER_CONST_HOST', 'http://my-default-host.com'),
-        ],
-    ],
+        ]
+    ]
 ];

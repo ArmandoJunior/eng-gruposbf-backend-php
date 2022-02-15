@@ -25,5 +25,5 @@ jobs:
       - uses: actions/checkout@v1
       - uses: ./.github/actions/composer
       - uses: ./.github/actions/config-framework
-      - run: ./vendor/bin/phpcs
+#      - run: ./vendor/bin/phpcs
       - run: ./vendor/bin/phpunit
