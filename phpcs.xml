@@ -9,6 +9,7 @@
     <file>routes</file>
 
     <exclude-pattern>*/database/*</exclude-pattern>
+    <exclude-pattern>*/config/l5-swagger.php*</exclude-pattern>
     <exclude-pattern>*/cache/*</exclude-pattern>
     <exclude-pattern>*/*.js</exclude-pattern>
     <exclude-pattern>*/*.css</exclude-pattern>
