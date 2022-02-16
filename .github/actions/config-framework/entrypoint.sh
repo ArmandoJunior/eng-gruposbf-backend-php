@@ -1,6 +1,7 @@
 #!/bin/sh
 
 cp /.docker/app/.env .env
+cp /.docker/app/.env.testing .env.testing
 #cp phpunit.example.xml phpunit.xml
 php artisan cache:clear
 php artisan config:clear
