@@ -5,4 +5,4 @@ Use o docker-compose para iniciar o projeto com o comando abaixo
 docker-compose up --build
 ```
 
-Doocumentação da API [link](http://localhost/api/documentation) by Swagger.
+Doocumentação da API [link](http://localhost/api/documentation) by Swagger. (Este link depende do projeto estar ON através do comando acima!
