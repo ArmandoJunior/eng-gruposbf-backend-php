@@ -6,5 +6,7 @@ use App\Dtos\DtoInterface;
 
 interface UseCaseInterface
 {
-    public function execute(DtoInterface $dto);
+    public function execute();
+
+    public function setData(DtoInterface $data): self;
 }

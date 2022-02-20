@@ -73,12 +73,8 @@ paths:
               schema:
                 type: object
                 properties:
-                  status:
-                    type: string
                   data:
-                    type: array
-                    items:
-                      $ref: "#/components/schemas/Product"
+                    $ref: "#/components/schemas/Product"
         404:
           description: Produto não encontrado
           content:
@@ -99,25 +95,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  status:
-                    type: string
-                  data:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        currency_code:
-                          type: string
-                        reference_base_value:
-                          type: number
-                        reference_conversion_value:
-                          type: string
-                        territory:
-                          type: string
-                        updated_at:
-                          type: string
+                $ref: "#/components/schemas/Price"
     post:
       summary: "Insere uma nova região baseado no currency_code da região"
       tags:
@@ -132,10 +110,12 @@ paths:
                   type: string
                   minLength: 3
                   maxLength: 3
+                  example: BRL
                 territory:
                   type: string
                   minLength: 3
                   maxLength: 40
+                  example: Brasil
       description: "É necessário inserir um currency_code válido (ISO 4217), veja uma lista no link abaixo."
       externalDocs:
         url: https://taxsummaries.pwc.com/glossary/currency-codes
@@ -173,6 +153,19 @@ paths:
                     example: "The given data was invalid."
                   errors:
                     example: "The currency code has already been taken."
+  /prices/renew:
+    get:
+      summary: "Renova todos os preços das regiões cadastradas no sistema"
+      tags:
+        - Prices
+      responses:
+        200:
+          description: Sucesso
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Price"
+
 components:
   schemas:
     Product:
@@ -186,7 +179,7 @@ components:
           example: Nike
         gender:
           type: string
-          enum: [marculino, feminino]
+          enum: [masculino, feminino, unisex]
         category:
           type: string
           example: Tênis
@@ -214,6 +207,34 @@ components:
               price_description:
                 type: string
                 example: "BRL: 1,00 (Brasil)"
+    Price:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            type: object
+            properties:
+              currency_code:
+                type: string
+                example: "BRL"
+              reference_base_value:
+                type: number
+                example: 1
+              reference_conversion_value:
+                type: string
+                example: "0.19"
+              territory:
+                type: string
+                example: "Índia"
+              created_at:
+                type: string
+                format: date
+                example: "2022-02-20T11:41:01.000000Z"
+              updated_at:
+                type: string
+                format: date
+                example: "2022-02-20T11:49:01.000000Z"
 tags:
   - name: Products
     description: Buscar todos os produtos ou um produto específico pelo seu id

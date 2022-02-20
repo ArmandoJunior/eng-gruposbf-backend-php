@@ -15,7 +15,6 @@ yarn-error.log
 /.vscode
 /.env
 /html-coverage/
-/phpunit.xml
 /.docker/dbdata/
 /.env.testing
 /coverage.php

@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class ProductController extends Controller
 {
-    public function index()
+    public function index(): ProductCollection
     {
         $productsCollection = Product::query()->paginate();
         return new ProductCollection($productsCollection);

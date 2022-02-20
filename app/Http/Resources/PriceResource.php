@@ -18,6 +18,7 @@ class PriceResource extends JsonResource
             'reference_base_value' => 1.00,
             'reference_conversion_value' => $this->value,
             'territory' => $this->territory,
+            'created_at' => $this->created_at,
             'updated_at' => $this->updated_at
         ];
     }
