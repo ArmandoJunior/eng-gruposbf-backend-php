@@ -8,7 +8,6 @@ use App\Http\Resources\PriceResource;
 use App\Models\Price;
 use App\Services\Currency\CurrencyApi;
 use App\UseCases\Price\CreatePriceWithCurrencyApiIntegration;
-use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class PriceController extends Controller
 {
@@ -21,8 +20,7 @@ class PriceController extends Controller
     public function store(
         StorePriceRequest $request,
         CreatePriceWithCurrencyApiIntegration $createPriceWithCurrencyApiIntegration
-    )
-    {
+    ) {
         try {
             $fields = json_decode($request->getContent());
             $price = $createPriceWithCurrencyApiIntegration->setData(new PriceDto($fields))->execute();
@@ -39,7 +37,7 @@ class PriceController extends Controller
         $prices = Price::all(['id', 'currency_code']);
 
         try {
-            $prices->filter(function ($price) use ($currencyApi){
+            $prices->filter(function ($price) use ($currencyApi) {
                 $currencyApi->setCurrencyCode($price->currency_code);
 
                 /** Executa a busca do valor de referência para conversão dos preços para a região informada. */
