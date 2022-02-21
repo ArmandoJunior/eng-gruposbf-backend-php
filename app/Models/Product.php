@@ -11,7 +11,7 @@ class Product extends Model
 {
     use HasFactory, Uuid;
 
-    protected $fillable = ['model', 'amount', 'gender', 'brand_id', 'category_id'];
+    protected $fillable = ['model', 'amount', 'gender', 'image_url', 'brand_id', 'category_id'];
     protected $casts = ['id' => 'string'];
     public $incrementing = false;
 

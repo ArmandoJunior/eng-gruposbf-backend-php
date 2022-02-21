@@ -20,7 +20,7 @@ class ProductTest extends TestCase
 
     public function test_attributes(): void
     {
-        $this->assertEquals(['model', 'amount', 'gender', 'brand_id', 'category_id'], $this->product->getFillable());
+        $this->assertEquals(['model', 'amount', 'gender', 'image_url', 'brand_id', 'category_id'], $this->product->getFillable());
         $this->assertEquals(['id' => 'string'], $this->product->getCasts());
         $this->assertEquals(false, $this->product->getIncrementing());
     }

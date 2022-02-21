@@ -5,51 +5,39 @@ namespace App\UseCases\Price;
 use App\Dtos\DtoInterface;
 use App\Dtos\PriceDto;
 use App\Models\Price;
+use App\Services\Currency\CurrencyApi;
+use App\Services\Currency\CurrencyInterface;
 use App\UseCases\UseCaseInterface;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Http\Client\Response;
-use Illuminate\Support\Facades\Http;
 
 class CreatePriceWithCurrencyApiIntegration implements UseCaseInterface
 {
+    private DtoInterface $data;
+    private CurrencyInterface $currencyApi;
 
-    public function execute(DtoInterface $dto): Model
+    public function __construct(CurrencyApi $currencyApi)
     {
-        /** @var PriceDto $dto */
-        $response = $this->getResponseCurrencyApi($dto->getCurrencyCode());
-        $objectResponse = $this->getRequestContentIntoObject($response, $dto);
-        return $this->createPrice($objectResponse, $dto);
+        $this->currencyApi = $currencyApi;
     }
 
-    private function getResponseCurrencyApi(string $currencyCode): Response
+    public function execute(): Model
     {
-        return Http::get("https://economia.awesomeapi.com.br/last/BRL-$currencyCode");
+        $this->currencyApi->setCurrencyCode($this->data->getCurrencyCode());
+        $this->currencyApi->execute();
+        return $this->createPrice($this->data);
     }
 
-    /**
-     * @param Response $response
-     * @param $dto
-     * @return mixed
-     */
-    private function getRequestContentIntoObject(Response $response, $dto)
+    public function setData(DtoInterface $data): UseCaseInterface
     {
-        $body = $response->body();
-        $jsonResponse = json_decode($body);
-        $attribute = "BRL{$dto->getCurrencyCode()}";
-        $json = $jsonResponse->$attribute;
-        return $json;
+        $this->data = $data;
+        return $this;
     }
 
-    /**
-     * @param $objectResponse
-     * @param $dto
-     * @return Model
-     */
-    private function createPrice($objectResponse, $dto): Model
+    private function createPrice(PriceDto $dto): Model
     {
         return Price::query()->create([
-            'value' => $objectResponse->high,
-            'currency_code' => $objectResponse->codein,
+            'value' => $this->currencyApi->getReferenceValue(),
+            'currency_code' => $this->currencyApi->getCurrencyCodeFromResponse(),
             'territory' => $dto->getTerritory()
         ]);
     }

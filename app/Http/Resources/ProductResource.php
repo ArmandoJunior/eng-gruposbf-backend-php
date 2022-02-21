@@ -8,12 +8,12 @@ use Illuminate\Http\Resources\Json\JsonResource;
 class ProductResource extends JsonResource
 {
     /**
-     * Transform the resource into an array.
+     * * Transform the resource into an array.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return array|\Illuminate\Contracts\Support\Arrayable|\JsonSerializable
+     * @param $request
+     * @return array
      */
-    public function toArray($request)
+    public function toArray($request): array
     {
         $amount = $this->amount;
         $prices = Price::all(['currency_code', 'value', 'territory']);
@@ -26,6 +26,7 @@ class ProductResource extends JsonResource
 
         return [
             'id' => $this->id,
+            'image_url' => $this->image_url,
             'brand' => $this->brand->name,
             'gender' => $this->gender,
             'category' => $this->category->name,

@@ -3,11 +3,15 @@ Content-Type: application/json
 Accept: application/json
 
 {
-    "currency_code": "JPY",
+    "currency_code": "ARS",
     "territory": "Japan"
 }
 
 ###
 GET {{uri}}/prices
+Accept: application/json
+
+###
+GET {{uri}}/prices/renew
 Accept: application/json
 
