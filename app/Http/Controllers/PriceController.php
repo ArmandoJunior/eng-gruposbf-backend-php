@@ -15,7 +15,7 @@ class PriceController extends Controller
 {
     public function index()
     {
-        $priceCollection = Cache::remember('prices', 60*1, function () {
+        $priceCollection = Cache::remember('prices', 60, function () {
             return Price::all(['currency_code', 'value', 'territory', 'created_at', 'updated_at']);
         });
 
@@ -62,13 +62,13 @@ class PriceController extends Controller
 
     public function update()
     {
-       $prices = Price::all();
+        $prices = Price::all();
 
-       foreach ($prices as $price) {
-           $price->update([
+        foreach ($prices as $price) {
+            $price->update([
                'territory' => Color::colorName()
-           ]);
-       }
+            ]);
+        }
 
         return Price::all();
     }
