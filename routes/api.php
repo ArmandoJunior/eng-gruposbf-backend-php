@@ -24,4 +24,5 @@ Route::controller(PriceController::class)->group(function () {
     Route::get('/prices', 'index');
     Route::get('/prices/renew', 'renew');
     Route::post('/prices', 'store');
+    Route::get('/prices/update', 'update');
 });

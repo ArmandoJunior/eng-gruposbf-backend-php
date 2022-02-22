@@ -8,12 +8,17 @@ use App\Http\Resources\PriceResource;
 use App\Models\Price;
 use App\Services\Currency\CurrencyApi;
 use App\UseCases\Price\CreatePriceWithCurrencyApiIntegration;
+use Faker\Provider\Color;
+use Illuminate\Support\Facades\Cache;
 
 class PriceController extends Controller
 {
     public function index()
     {
-        $priceCollection = Price::all(['currency_code', 'value', 'territory', 'updated_at']);
+        $priceCollection = Cache::remember('prices', 60, function () {
+            return Price::all(['currency_code', 'value', 'territory', 'created_at', 'updated_at']);
+        });
+
         return PriceResource::collection($priceCollection);
     }
 
@@ -53,5 +58,18 @@ class PriceController extends Controller
 
         $priceCollection = Price::all(['currency_code', 'value', 'territory', 'created_at', 'updated_at']);
         return PriceResource::collection($priceCollection);
+    }
+
+    public function update()
+    {
+        $prices = Price::all();
+
+        foreach ($prices as $price) {
+            $price->update([
+               'territory' => Color::colorName()
+            ]);
+        }
+
+        return Price::all();
     }
 }

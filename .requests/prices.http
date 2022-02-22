@@ -15,3 +15,7 @@ Accept: application/json
 GET {{uri}}/prices/renew
 Accept: application/json
 
+### para teste do cache, eu coloquei 5 minuto
+GET {{uri}}/prices/update
+Accept: application/json
+

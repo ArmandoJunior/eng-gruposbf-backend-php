@@ -165,6 +165,18 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Price"
+  /prices/update:
+    get:
+      summary: "Faz um update no campo territory de todos os Prices para efeito de teste do uso de cache no sistema, o cache está com o TTL configurado para 1min"
+      tags:
+        - Prices
+      responses:
+        200:
+          description: Sucesso
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Price"
 
 components:
   schemas:
